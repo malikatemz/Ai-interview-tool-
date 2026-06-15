@@ -83,8 +83,8 @@ A production-grade, enterprise-ready AI-powered interview platform designed to f
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/ai-interview-platform.git
-cd ai-interview-platform
+git clone https://github.com/malikatemz/Ai-interview-tool-.git
+cd Ai-interview-tool-
 
 # Start with Docker Compose
 docker-compose up
@@ -120,35 +120,35 @@ NEXT_PUBLIC_WS_URL=http://localhost:8000
 ## 📁 Project Structure
 
 ```
-ai-interview-platform/
+Ai-interview-tool-/
 ├── SPEC.md                    # Technical specification
 ├── README.md                  # This file
 ├── docker-compose.yml         # Container orchestration
 ├── frontend/
 │   ├── app/                  # Next.js App Router pages
 │   │   ├── (candidate)/      # Candidate-facing routes
-│   │   ├── (recruiter)/     # Recruiter-facing routes
-│   │   └── api/             # API routes (if needed)
+│   │   ├── (recruiter)/      # Recruiter-facing routes
+│   │   └── api/              # API routes (if needed)
 │   ├── components/
 │   │   ├── interview/        # Interview-specific components
-│   │   ├── recruiter/        # Dashboard components
-│   │   └── ui/              # Reusable UI components
+│   │   ├── recruiter/         # Dashboard components
+│   │   └── ui/               # Reusable UI components
 │   ├── hooks/                # Custom React hooks
 │   ├── lib/                  # Utilities and API clients
 │   └── stores/               # Zustand state stores
 └── backend/
     ├── app/
-    │   ├── api/v1/          # API route handlers
-    │   ├── models/          # SQLAlchemy models
-    │   ├── schemas/         # Pydantic schemas
-    │   ├── services/        # Business logic
+    │   ├── api/v1/           # API route handlers
+    │   ├── models/           # SQLAlchemy models
+    │   ├── schemas/           # Pydantic schemas
+    │   ├── services/          # Business logic
     │   │   ├── interview_engine.py   # AI interview logic
-    │   │   ├── evaluation.py         # Scoring engine
-    │   │   ├── intelligence.py       # RAG + Memory
-    │   │   └── security.py           # Auth + Anti-cheat
-    │   └── main.py          # FastAPI application
-    ├── tests/               # Test files
-    └── requirements.txt     # Python dependencies
+    │   │   ├── evaluation.py          # Scoring engine
+    │   │   ├── intelligence.py        # RAG + Memory
+    │   │   └── security.py            # Auth + Anti-cheat
+    │   └── main.py            # FastAPI application
+    ├── tests/                # Test files
+    └── requirements.txt      # Python dependencies
 ```
 
 ## 🔐 Security Features
