@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #fafafa;
+    --surface: #ffffff;
+    --surface-elevated: #f4f4f5;
+    --border: #e4e4e7;
+    --text-primary: #18181b;
+    --text-secondary: #71717a;
+    --accent-primary: #4f46e5;
+    --accent-success: #16a34a;
+    --accent-warning: #d97706;
+    --accent-danger: #dc2626;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #0a0a0f;
+    --surface: #13131a;
+    --surface-elevated: #1a1a24;
+    --border: #2a2a3a;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --accent-primary: #6366f1;
+    --accent-success: #22c55e;
+    --accent-warning: #f59e0b;
+    --accent-danger: #ef4444;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-[var(--accent-primary)] text-white hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply btn bg-[var(--surface-elevated)] text-[var(--text-primary)] hover:bg-[var(--border)];
+  }
+
+  .btn-ghost {
+    @apply btn hover:bg-[var(--surface-elevated)] text-[var(--text-secondary)];
+  }
+
+  .btn-danger {
+    @apply btn bg-[var(--accent-danger)] text-white hover:opacity-90;
+  }
+
+  .card {
+    @apply rounded-lg border bg-[var(--surface)] p-6 shadow-sm;
+  }
+
+  .card-elevated {
+    @apply rounded-lg bg-[var(--surface-elevated)] p-6 shadow-md;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-md border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-sm placeholder:text-[var(--text-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .label {
+    @apply text-sm font-medium leading-none text-[var(--text-primary)];
+  }
+
+  /* Interview specific animations */
+  .pulse-recording {
+    animation: pulse-recording 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-recording {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Video container aspect ratio */
+  .video-container {
+    @apply relative overflow-hidden rounded-lg bg-black;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Transcript highlight */
+  .transcript-highlight {
+    @apply bg-[var(--accent-primary)]/20 border-l-4 border-[var(--accent-primary)];
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 w-full overflow-hidden rounded-full bg-[var(--surface-elevated)];
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-[var(--accent-primary)] transition-all duration-300 ease-out;
+  }
+
+  /* Kanban board */
+  .kanban-column {
+    @apply flex flex-col gap-4 rounded-lg bg-[var(--surface)] p-4 min-h-[500px];
+  }
+
+  .kanban-card {
+    @apply cursor-grab rounded-lg border bg-[var(--surface-elevated)] p-4 shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  /* Score badge */
+  .score-badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+
+  .score-strong-hire {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+  }
+
+  .score-hire {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+
+  .score-hold {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+  }
+
+  .score-reject {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-md bg-[var(--surface)]/80;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-primary)] to-purple-500;
+  }
+}
