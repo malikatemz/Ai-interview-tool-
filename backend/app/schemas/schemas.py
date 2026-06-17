@@ -206,6 +206,14 @@ class QuestionGenerateInput(BaseModel):
     count: int = Field(default=10, ge=5, le=30)
 
 
+class QuestionTemplate(BaseModel):
+    id: str
+    content: str
+    type: str
+    category: str
+    difficulty: int
+
+
 class GeneratedQuestion(BaseModel):
     question_id: str
     content: str
@@ -309,12 +317,28 @@ class Transcript(BaseModel):
     full_text: str
 
 
+class TranscriptWithEvaluation(BaseModel):
+    segment: TranscriptSegment
+    evaluation: Optional[EvaluationResult] = None
+
+
+class DetailedEvaluation(BaseModel):
+    interview_id: str
+    scores: List[ScoreDimensionSummary]
+    recommendation: RecommendationResponse
+    transcript_with_evaluation: List[TranscriptWithEvaluation]
+
+
 # Dashboard schemas
 class PipelineStage(BaseModel):
     id: str
     name: str
     count: int
     candidates: List[CandidateResponse] = []
+
+
+class PipelineData(BaseModel):
+    stages: List[PipelineStage]
 
 
 class DashboardStats(BaseModel):

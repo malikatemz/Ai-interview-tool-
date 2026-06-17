@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import uuid
 import json
 
-from app.api.v1 import auth, candidates, interviews, questions, evaluations, dashboard, reports
+from app.api.v1 import auth, candidates, interviews, questions, evaluations, dashboard, reports, qa_loop
 from app.services.interview_engine import InterviewOrchestrator, QuestionGenerator, FollowUpEngine, InterviewContext, InterviewState
 from app.services.evaluation import ScoringEngine, Rubric, EvidenceCollector, ScoreDimension
 from app.services.intelligence import get_intelligence_layer, ContextType
@@ -50,6 +50,7 @@ app.include_router(questions.router, prefix="/api/v1/questions", tags=["Question
 app.include_router(evaluations.router, prefix="/api/v1/evaluate", tags=["Evaluations"])
 app.include_router(dashboard.router, prefix="/api/v1/dashboard", tags=["Dashboard"])
 app.include_router(reports.router, prefix="/api/v1/reports", tags=["Reports"])
+app.include_router(qa_loop.router, prefix="/api/v1", tags=["Q&A Loop"])
 
 
 # Health check
@@ -200,7 +201,7 @@ async def start_interview(interview_id: str):
     """Start an interview session"""
     # This would verify auth and update database
     manager.set_state(interview_id, {
-        **manager.get_state(interview_id) or {},
+        **(manager.get_state(interview_id) or {}),
         "status": "running",
         "started_at": datetime.utcnow().isoformat()
     })
