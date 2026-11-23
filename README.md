@@ -2,6 +2,16 @@
 
 A production-grade, enterprise-ready AI-powered interview platform designed to feel like a real recruiting solution, not a demo app.
 
+## Portfolio Status
+
+**✅ Built** — this repository is the working implementation for the
+[AI Interview Prep & Structured Scorecard Tool](https://github.com/malikatemz/reimagined-octo-eureka/blob/main/ideas/hr/ai-interview-prep-structured-scorecard-tool.md)
+opportunity in the [AI SaaS Portfolio](https://github.com/malikatemz/reimagined-octo-eureka).
+
+**Verification (23 Nov 2026):** full-stack interview platform with video/audio capture, adaptive interview engine, six-dimension scoring, evaluation, and reporting APIs; verified in the portfolio audit.
+
+---
+
 ## 🌟 Features
 
 ### 1. Candidate Experience Layer
